@@ -5,4 +5,6 @@ c=30
 
 echo $a
  
+ echo value of a is $a 
+ 
 
