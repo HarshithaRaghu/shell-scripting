@@ -6,3 +6,5 @@
 #comments are just for hte human readable purpose only
 
 echo "Hello world" 
+echo line1
+echo line2
