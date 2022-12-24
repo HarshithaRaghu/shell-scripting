@@ -6,4 +6,4 @@
 #comments are just for hte human readable purpose only
 
 echo "Hello world" 
-echo -e "line1\nline2\nline3"
+echo -e "line1\nline2\nline3\tlinux\tlipe\tlow"
