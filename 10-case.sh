@@ -1,9 +1,9 @@
 #!/bin/bash
 
-case $var in
-   opt1) commands1 ;;
-   opt2) commands2 ;;
-esac
+# case $var in
+#    opt1) commands1 ;;
+#    opt2) commands2 ;;
+# esac
 
 ACTION=$1
 
