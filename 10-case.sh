@@ -18,6 +18,6 @@ case $ACTION in
          exit 0
          ;;
      *)
-         echo -e "\e[31m valid options are start or stop or resstart only \e[0m"
+         echo -e "\e[31m valid options are start or stop or restart only\e[0m"
          exit 1
  esac
