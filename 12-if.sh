@@ -7,7 +7,7 @@
 # fi
 
 # if else condition
-if [ "$a" == "ABC"]; then
+if [ "$a" == "ABC" ] ; then
    echo -e "\e[32m both of them are equal \e[0m"
    exit 0
 else
