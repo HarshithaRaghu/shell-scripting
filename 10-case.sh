@@ -19,4 +19,5 @@ ACTION=$1
 #         ;;
 #     *)
 #         echo -e "\e[31m valid options are start or stop or resstart only \e[0m"
+#         exit 1
 # esac
