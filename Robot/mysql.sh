@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "I am Mysql"
+echo I am Mysql
