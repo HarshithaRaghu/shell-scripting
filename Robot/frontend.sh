@@ -18,7 +18,7 @@ stat () {
    fi      
 }
 
-echo -n "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
+echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
 
 echo -n "Installing nginx: "
 yum install nginx -y    &>> /tmp/$COMPONENT.log
