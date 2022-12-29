@@ -1,5 +1,5 @@
 #!/bin/bash
-LOGFILE=/tmp/$COMPONENT.log
+LOGFILE=/tmp/frontend.log
 set -e
 COMPONENT=frontend
 ID=$(id -u)
