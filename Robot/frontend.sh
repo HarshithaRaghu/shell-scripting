@@ -17,13 +17,13 @@ stat () {
 }
 
 echo -n "Installing nginx: "
-yum install nginx -y    &>> /tmp/frontend.log
+yum install nginx -y    &>> /tmp/$COMPONENT.log
 stat $?    
 
 
-systemctl enable nginx  &>> /tmp/frontend.log
+systemctl enable nginx  &>> /tmp/$COMPONENT.log
 echo -n "starting nginx: "
-systemctl start nginx   &>> /tmp/frontend.log
+systemctl start nginx   &>> /tmp/$COMPONENT.log
 stat $?     
 
 echo -n "downloading the $COMPONENT"
@@ -32,23 +32,23 @@ stat $?
 
 echo -n "clearing the default content :" 
 cd /usr/share/nginx/html
-rm -rf * &>> /tmp/frontend.log
+rm -rf * &>> /tmp/$COMPONENT.log
 stat $?
 
 echo -n "extracting $COMPONENT :"
-unzip /tmp/frontend.zip &>> /tmp/frontend.log
+unzip /tmp/frontend.zip &>> /tmp/$COMPONENT.log
 stat $?
 
 echo -n "copying $COMPONENT : "
-mv frontend-main/* . &>> /tmp/frontend.log
-mv static/* . &>> /tmp/frontend.log
-rm -rf frontend-main README.md &>> /tmp/frontend.log
-mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> /tmp/frontend.log
+mv frontend-main/* . &>> /tmp/$COMPONENT.log
+mv static/* . &>> /tmp/$COMPONENT.log
+rm -rf frontend-main README.md &>> /tmp/$COMPONENT.log
+mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> /tmp/$COMPONENT.log
 stat $?
 
 echo -n "restarting nginx: "
-systemctl enable nginx  &>> /tmp/frontend.log
-systemctl restart nginx   &>> /tmp/frontend.log
+systemctl enable nginx  &>> /tmp/$COMPONENT.log
+systemctl restart nginx   &>> /tmp/$COMPONENT.log
 stat $? 
 
 
