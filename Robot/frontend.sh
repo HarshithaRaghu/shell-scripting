@@ -1,5 +1,6 @@
 #!/bin/bash
-
+LOGFILE=/tmp/$COMPONENT.log
+set -e
 COMPONENT=frontend
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
@@ -16,13 +17,13 @@ stat () {
 }
 
 echo -n "Installing nginx: "
-yum install nginx -y    &>> /tmp/frontend.log
+yum install nginx -y    $LOGFILE
 stat $?    
 
 
-systemctl enable nginx  &>> /tmp/frontend.log
+systemctl enable nginx  $LOGFILE
 echo -n "starting nginx: "
-systemctl start nginx   &>> /tmp/frontend.log
+systemctl start nginx   $LOGFILE
 stat $?     
 
 echo -n "downloading the $COMPONENT"
@@ -31,23 +32,23 @@ stat $?
 
 echo -n "clearing the default content :" 
 cd /usr/share/nginx/html
-rm -rf * &>> /tmp/frontend.log
+rm -rf * $LOGFILE
 stat $?
 
 echo -n "extracting $COMPONENT :"
-unzip /tmp/frontend.zip &>> /tmp/frontend.log
+unzip /tmp/frontend.zip $LOGFILE
 stat $?
 
 echo -n "copying $COMPONENT : "
-mv frontend-main/* . &>> /tmp/frontend.log
-mv static/* . &>> /tmp/frontend.log
-rm -rf frontend-main README.md &>> /tmp/frontend.log
-mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> /tmp/frontend.log
+mv frontend-main/* . $LOGFILE
+mv static/* . $LOGFILE
+rm -rf frontend-main README.md $LOGFILE
+mv localhost.conf /etc/nginx/default.d/roboshop.conf $LOGFILE
 stat $?
 
 echo -n "restarting nginx: "
-systemctl enable nginx  &>> /tmp/frontend.log
-systemctl restart nginx   &>> /tmp/frontend.log
+systemctl enable nginx  $LOGFILE
+systemctl restart nginx  $LOGFILE
 stat $? 
 
 
