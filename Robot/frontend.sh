@@ -9,13 +9,18 @@ fi
 echo "Installing nginx: "
 yum install nginx -y    &>> /tmp/frontend.log
 if [ $? -eq 0 ]; then
-   echo -e "success"
+   echo -e "\e[32m success \e[0m"
 else
-   echo -e "failure"
+   echo -e "\e[31m failure \e[0m"
 fi      
 
 
 systemctl enable nginx  &>> /tmp/frontend.log
 echo "starting nginx: "
-systemctl start nginx   &>> /tmp/frontend.log 
+systemctl start nginx   &>> /tmp/frontend.log
+if [ $? -eq 0 ]; then
+   echo -e "\e[32m success \e[0m"
+else
+   echo -e "\e[31m failure \e[0m"
+fi       
 
