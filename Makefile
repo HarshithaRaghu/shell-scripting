@@ -10,20 +10,20 @@ catalogue:
 redis:
      bash     Robot/redis.sh
 
-user:
+user:     
      bash     Robot/user.sh
 
-cart:
+cart:     
      bash     Robot/cart.sh
 
-mysql:
+mysql:    
      bash     Robot/mysql.sh
 
-shipping:
+shipping:     
      bash     Robot/shipping.sh
 
-rabbitmq:
+rabbitmq:     
      bash     Robot/rabbitmq.sh
      
-payment:
+payment:              
      bash     Robot/payment.sh	 	 	 	 	 	 	 
