@@ -32,7 +32,7 @@ systemctl start mongod
 stat $?
 
 echo -n "downloading the $COMPONENT schema : "
-curl -s -L -o /tmp/mongodb.zip "https://github.com/stans-robot-project/mongodb/archive/main.zip"
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
 stat $?
 
 echo -n "extracting the $COMPONENT schema files : "
