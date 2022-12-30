@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE=/tmp/$COMPONENT.log
+LOGFILE="/tmp/$COMPONENT.log"
 
 set -e 
 COMPONENT=mongodb
