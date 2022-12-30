@@ -27,8 +27,8 @@ yum install -y mongodb-org   &>> "${LOGFILE}"
 stat $?
 
 echo -n "starting $COMPONENT : "
-systemctl enable mongodb
-systemctl start mongodb
+systemctl enable mongod
+systemctl start mongod
 stat $?
 
 echo -n "downloading the $COMPONENT schema : "
