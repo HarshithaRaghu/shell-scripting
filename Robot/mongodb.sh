@@ -10,7 +10,10 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans
 stat $?
 
 echo -n "Installing $COMPONENT : "
-yum install -y mongodb-org   &>> "${LOGFILE}"
+yum install -y mongodb-org   &>> "${LOGFILE}" 
+
+echo -n "whitelisting the mongodb" 
+sudo sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat $?
 
 echo -n "starting $COMPONENT : "
@@ -32,4 +35,5 @@ cd mongodb-main
 mongo < catalogue.js   &>> "${LOGFILE}"
 mongo < users.js       &>> "${LOGFILE}"
 stat $?
+
 
