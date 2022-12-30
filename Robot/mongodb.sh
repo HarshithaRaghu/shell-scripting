@@ -10,7 +10,8 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans
 stat $?
 
 echo -n "Installing $COMPONENT : "
-yum install -y mongodb-org   &>> "${LOGFILE}" 
+yum install -y mongodb-org   &>> "${LOGFILE}"
+stat $?
 
 echo -n "whitelisting the mongodb" 
 sudo sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
