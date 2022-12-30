@@ -23,7 +23,7 @@ curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans
 stat $?
 
 echo -n "Installing $COMPONENT : "
-yum install -y mongodb-org   &>> "${LOFGILE}"
+yum install -y mongodb-org   &>> "${LOGFILE}"
 stat $?
 
 echo -n "starting $COMPONENT : "
@@ -37,11 +37,12 @@ stat $?
 
 echo -n "extracting the $COMPONENT schema files : "
 cd /tmp
-unzip -o mongodb.zip   &>> "${LOFGILE}"
+unzip -o mongodb.zip   &>> "${LOGFILE}"
 stat $?
 
 echo -n "injecting the schema : "
 cd mongodb-main
-mongo < catalogue.js   &>> "${LOFGILE}"
-mongo < users.js       &>> "${LOFGILE}"
+mongo < catalogue.js   &>> "${LOGFILE}"
+mongo < users.js       &>> "${LOGFILE}"
 stat $?
+
