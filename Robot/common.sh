@@ -1,6 +1,6 @@
 LOGFILE="/tmp/$COMPONENT.log"
 
-APPUSER="roboshop"
+APPUSER=roboshop
 
 
 ID=$(id -u)
