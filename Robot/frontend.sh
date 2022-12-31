@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGFILE=/tmp/$COMPONENT.log
+LOGFILE="/tmp/$COMPONENT.log"
 
 set -e 
 COMPONENT=frontend
@@ -22,13 +22,13 @@ echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
 
 
 echo -n "Installing nginx: "
-yum install nginx -y    &>> /tmp/$COMPONENT.log
+yum install nginx -y    &>> "${LOGFILE}"
 stat $?    
 
 
-systemctl enable nginx  &>> /tmp/$COMPONENT.log
+systemctl enable nginx  &>> "${LOGFILE}"
 echo -n "starting nginx: "
-systemctl start nginx   &>> /tmp/$COMPONENT.log
+systemctl start nginx   &>> "${LOGFILE}"
 stat $?     
 
 echo -n "downloading the $COMPONENT"
@@ -37,23 +37,23 @@ stat $?
 
 echo -n "clearing the default content :" 
 cd /usr/share/nginx/html
-rm -rf * &>> /tmp/$COMPONENT.log
+rm -rf * &>> "${LOGFILE}"
 stat $?
 
 echo -n "extracting $COMPONENT :"
-unzip /tmp/frontend.zip &>> /tmp/$COMPONENT.log
+unzip /tmp/frontend.zip &>> "${LOGFILE}"
 stat $?
 
 echo -n "copying $COMPONENT : "
-mv frontend-main/* . &>> /tmp/$COMPONENT.log
-mv static/* . &>> /tmp/$COMPONENT.log
-rm -rf frontend-main README.md &>> /tmp/$COMPONENT.log
-mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> /tmp/$COMPONENT.log
+mv frontend-main/* . &>> "${LOGFILE}"
+mv static/* . &>> "${LOGFILE}"
+rm -rf frontend-main README.md &>> "${LOGFILE}"
+mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> "${LOGFILE}"
 stat $?
 
 echo -n "restarting nginx: "
-systemctl enable nginx  &>> /tmp/$COMPONENT.log
-systemctl restart nginx   &>> /tmp/$COMPONENT.log
+systemctl enable nginx  &>> "${LOGFILE}"
+systemctl restart nginx   &>> "${LOGFILE}"
 stat $? 
 
 
