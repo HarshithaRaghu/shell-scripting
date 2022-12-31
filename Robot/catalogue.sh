@@ -38,7 +38,7 @@ stat $?
 
 echo -n "configuring the $COMPONENT service: "
 sed -i -e 's/MONGO-DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
-mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/service/$COMPONENT.service 
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd.service/$COMPONENT.service 
 stat $?
 
 echo -n "starting $COMPONENT service: "
