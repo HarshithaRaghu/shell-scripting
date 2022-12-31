@@ -47,3 +47,4 @@ systemctl enable $COMPONENT &>> "${LOGFILE}"
 systemctl restart $COMPONENT &>> "${LOGFILE}"
 stat $?
 
+echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
