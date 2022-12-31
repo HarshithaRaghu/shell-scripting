@@ -36,6 +36,19 @@ cd $COMPONENT
 npm install &>> "${LOGFILE}"
 stat $?
 
+echo -n "configuring the $COMPONENT service: "
+sed -i -e 's/MONGO-DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/service/$COMPONENT.service 
+stat $?
+
+echo -n "starting $COMPONENT service: "
+systemctl daemon-reload &>> "${LOGFILE}" 
+systemctl enable catalogue &>> "${LOGFILE}"
+systemctl restart catalogue &>> "${LOGFILE}"
+stat $?
+
+
+
 
 
 
