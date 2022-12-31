@@ -37,8 +37,8 @@ npm install &>> "${LOGFILE}"
 stat $?
 
 echo -n "configuring the $COMPONENT service: "
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$COMPONENT/systemd.service
-mv /home/$COMPONENT/systemd.service /etc/systemd/service/$COMPONENT.service 
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service 
 stat $?
 
 echo -n "starting $COMPONENT service: "
