@@ -11,7 +11,7 @@ yum install nodejs -y  &>> "${LOGFILE}"
 stat $?
 
 echo -n "creating application user $APPUSER :"
-useradd $APPUSER   &>> "${logfile}"
+useradd $APPUSER 
 stat $?
 
 
