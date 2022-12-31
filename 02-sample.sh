@@ -14,3 +14,12 @@ if [ $? -eq 0 ]; then
     echo "show plugins;"|  mysql -uroot -pRoboShop@1 | grep validate_password  &>> "${LOGFILE}"
     stat $?
 fi 
+
+
+# This should happen only if the default password is not changed, rest of the times, I don't want to change it.
+echo show databases | mysql -uroot -pRoboShop@1 &>> "${LOGFILE}"
+if [ $? -ne 0 ]; then 
+    echo -n "Resetting the default root password : "
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql  --connect-expired-password -uroot -p${DEFAULT_ROOT_PWD} &>> "${LOGFILE}"
+    stat $?
+fi 
