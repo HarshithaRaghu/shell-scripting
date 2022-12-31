@@ -17,4 +17,4 @@ systemctl enable mysqld
 systemctl start mysqld 
 stat $?
 
-
+vvvvvvvv
