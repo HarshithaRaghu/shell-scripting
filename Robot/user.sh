@@ -23,7 +23,7 @@ stat $?
 echo -n "cleanup and extracting the $COMPONENT: "
 rm -rf /home/$APPUSER/$COMPONENT/ 
 cd /home/$APPUSER
-unzip -o /tmp/user.zip "${LOGFILE}"
+unzip -o /tmp/user.zip &>>"${LOGFILE}"
 stat $?
 
 echo -n "changing the ownership to $APPUSER: "
