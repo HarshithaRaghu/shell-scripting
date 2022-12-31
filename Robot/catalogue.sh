@@ -11,7 +11,7 @@ yum install nodejs -y  &>> "${LOGFILE}"
 stat $?
 
 echo -n "creating application user roboshop :"
-useradd roboshop &>> "${LOGFILE}" 
+useradd roboshop  
 stat $?
 
 # $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
