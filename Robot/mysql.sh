@@ -17,3 +17,21 @@ systemctl enable mysqld
 systemctl start mysqld 
 stat $? 
 
+echo -n "fetching the default password: "
+DEFAULT_ROOT_PWD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
+stat $?
+
+# This should happen only if the default password is not changed, rest of the times, I don't want to change it.
+echo show databases | mysql -uroot -pRoboShop@1 &>> "${LOGFILE}"
+if [ $? -ne 0 ]; then 
+    echo -n "Resetting the default root password : "
+    echo "ALTER USER 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql  --connect-expired-password -uroot -p${DEFAULT_ROOT_PWD} &>> "${LOGFILE}"
+    stat $?
+fi 
+
+echo show plugins | mysql -uroot -pRoboShop@1 | grep validate_password;   &>> "${LOGFILE}"
+if [ $? -eq 0 ]; then 
+    echo -n "Uninstalling Password Validate Plugin "
+    echo "uninstall plugin validate_password;"|  mysql -uroot -pRoboShop@1  &>> "${LOGFILE}"
+    stat $?
+fi 
