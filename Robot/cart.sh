@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMPONENT=catalogue
+COMPONENT=cart
 
 source Robot/common.sh 
 
