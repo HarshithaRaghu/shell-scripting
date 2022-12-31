@@ -9,7 +9,7 @@ curl -s -L -o /etc/yum.repos.d/$COMPONENT.repo https://raw.githubusercontent.com
 stat $?
 
 echo -n "Installing $COMPONENT : "
-yum install mysql-community-server -y &>> "${LOGFILE}"
+yum install mysql-community-server -y 
 stat $?
 
 echo -n "starting $COMPONENT : "
