@@ -5,7 +5,7 @@ COMPONENT=catalogue
 source Robot/common.sh 
 
 
-echo -n "Configuring Nodejs repo: "
+echo -n "Configuring and installing Nodejs repo: "
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -  &>> "${LOGFILE}"
 yum install nodejs -y  &>> "${LOGFILE}"
 stat $?
@@ -31,10 +31,10 @@ mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
-# $ mv catalogue-main catalogue
-# $ cd /home/roboshop/catalogue
-# $ npm install
-
+echo -n "installing $COMPONENT Dependencies: "
+cd $COMPONENT
+npm install &>> "${LOGFILE}"
+stat $?
 
 
 
