@@ -3,6 +3,7 @@
 COMPONENT=catalogue
 
 APPUSER=roboshop
+
 source Robot/common.sh 
 
 
