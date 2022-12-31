@@ -47,6 +47,8 @@ systemctl enable catalogue &>> "${LOGFILE}"
 systemctl restart catalogue &>> "${LOGFILE}"
 stat $?
 
+echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
+
 
 
 
