@@ -4,13 +4,16 @@ COMPONENT=redis
 
 source Robot/common.sh
 
-echo -n "downloading the $COMPONENT : "
-curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo
+echo -n "downloading the $COMPONENT repo : "
+curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> "${LOGFILE}"
+stat $?
+
+echo -n "installing $COMPONENT: "
 yum install redis-6.2.7 -y &>> "${LOGFILE}"
 stat $?
 
 echo -n "whitelisting the $COMPONENT: " 
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf -e 's/127.0.0.1/0.0.0.0' /etc/redis/redis.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/redis.conf 
 stat $?
 
 echo -n "starting $COMPONENT service: "
