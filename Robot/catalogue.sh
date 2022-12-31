@@ -43,8 +43,8 @@ stat $?
 
 echo -n "starting $COMPONENT service: "
 systemctl daemon-reload &>> "${LOGFILE}" 
-systemctl enable catalogue &>> "${LOGFILE}"
-systemctl restart catalogue &>> "${LOGFILE}"
+systemctl enable $COMPONENT &>> "${LOGFILE}"
+systemctl restart $COMPONENT &>> "${LOGFILE}"
 stat $?
 
 echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
