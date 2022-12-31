@@ -7,3 +7,10 @@
 
 echo "Hello world" 
 echo -e "line1\nline2\nline3\tlinux\tlipe\tlow"
+
+echo show plugins | mysql -uroot -pRoboShop@1 | grep validate_password;   &>> "${LOGFILE}"
+if [ $? -eq 0 ]; then 
+    echo -n "Uninstalling Password Validate Plugin "
+    echo "show plugins;"|  mysql -uroot -pRoboShop@1 | grep validate_password  &>> "${LOGFILE}"
+    stat $?
+fi 
