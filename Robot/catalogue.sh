@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 COMPONENT=catalogue
 
@@ -13,6 +14,7 @@ stat $?
 echo -n "creating application user $APPUSER :"
 useradd $APPUSER   &>> "${logfile}"
 stat $?
+
 
 
 
