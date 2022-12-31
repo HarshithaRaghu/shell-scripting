@@ -1,8 +1,24 @@
 #!/bin/bash
 
-COMPONENT=mongodb
+COMPONENT=catalogue
 
-source common.sh 
+LOGFILE="/tmp/$COMPONENT.log"
+
+APPUSER=roboshop
+
+ID=$(id -u)
+if [ $ID -ne 0 ] ; then
+   echo -e "\e[31m you need to run script either as a root user or with a sudo privilege\e[0m"
+   exit 1
+fi
+
+stat () {
+   if [ $1 -eq 0 ] ; then
+    echo -e "\e[32m success \e[0m"
+   else
+    echo -e "\e[31m failure \e[0m"
+   fi      
+} 
 
 echo -n "Configuring Nodejs repo: "
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
