@@ -41,7 +41,7 @@ rm -rf * &>> "${LOGFILE}"
 stat $?
 
 echo -n "extracting $COMPONENT :"
-unzip /tmp/frontend.zip &>> "${LOGFILE}"
+unzip -o /tmp/frontend.zip &>> "${LOGFILE}"
 stat $?
 
 echo -n "copying $COMPONENT : "

@@ -14,9 +14,16 @@ echo -n "creating application user $APPUSER :"
 useradd $APPUSER  &>> "${LOGFILE}"  
 stat $?
 
-# $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
-# $ cd /home/roboshop
-# $ unzip /tmp/catalogue.zip
+echo -n "downloading the $COMPONENT :"
+curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
+stat $?
+
+echo -n "extracting the $COMPONENT: "
+cd /home/roboshop
+unzip -o /tmp/catalogue.zip  &>> "${LOGFILE}"
+stat $?
+
+
 # $ mv catalogue-main catalogue
 # $ cd /home/roboshop/catalogue
 # $ npm install
