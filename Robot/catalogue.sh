@@ -14,12 +14,12 @@ echo -n "creating application user roboshop :"
 useradd roboshop &>> "${LOGFILE}" 
 stat $?
 
-$ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
-$ cd /home/roboshop
-$ unzip /tmp/catalogue.zip
-$ mv catalogue-main catalogue
-$ cd /home/roboshop/catalogue
-$ npm install
+# $ curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
+# $ cd /home/roboshop
+# $ unzip /tmp/catalogue.zip
+# $ mv catalogue-main catalogue
+# $ cd /home/roboshop/catalogue
+# $ npm install
 
 
 
