@@ -20,8 +20,9 @@ echo -n "downloading the $COMPONENT :"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"
 stat $?
 
-echo -n "extracting the $COMPONENT: "
-cd /home/roboshop
+echo -n "cleanup and extracting the $COMPONENT: "
+rm -rf /home/$APPUSER/$COMPONENT/
+cd /home/$APPUSER
 unzip -o /tmp/catalogue.zip  &>> "${LOGFILE}"
 stat $?
 
