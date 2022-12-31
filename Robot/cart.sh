@@ -24,7 +24,7 @@ stat $?
 echo -n "cleanup and extracting the $COMPONENT: "
 rm -rf /home/$APPUSER/$COMPONENT/
 cd /home/$APPUSER
-unzip -o /tmp/cart.zip &>> "${LOGFILE}"
+unzip -o /tmp/cart.zip  &>> "${LOGFILE}"
 stat $?
 
 echo -n "changing the ownership to $APPUSER: "
@@ -49,4 +49,5 @@ systemctl restart $COMPONENT &>> "${LOGFILE}"
 stat $?
 
 echo -n -e "\e[32m ________ $COMPONENT Configuration is starting ________ \e[0m"
+
 
