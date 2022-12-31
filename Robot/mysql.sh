@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMPONENT=mysql
+COMPONENT=mysqld
 
 source Robot/common.sh
 
