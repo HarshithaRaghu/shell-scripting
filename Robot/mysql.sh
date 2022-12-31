@@ -16,5 +16,3 @@ echo -n "starting $COMPONENT : "
 systemctl enable mysqld 
 systemctl start mysqld 
 stat $?
-
-vvvvvvvv
