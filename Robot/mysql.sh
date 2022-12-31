@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMPONENT=mysqld
+COMPONENT=mysql
 
 source Robot/common.sh
 
@@ -9,12 +9,12 @@ curl -s -L -o /etc/yum.repos.d/$COMPONENT.repo https://raw.githubusercontent.com
 stat $?
 
 echo -n "Installing $COMPONENT : "
-yum install $COMPONENT-community-server -y &>> "${LOGFILE}"
+yum install mysql-community-server -y &>> "${LOGFILE}"
 stat $?
 
 echo -n "starting $COMPONENT : "
-systemctl enable $COMPONENT &>> "${LOGFILE}"
-systemctl start $COMPONENT &>> "${LOGFILE}"
+systemctl enable mysqld &>> "${LOGFILE}"
+systemctl start mysqld &>> "${LOGFILE}"
 stat $?
 
 
