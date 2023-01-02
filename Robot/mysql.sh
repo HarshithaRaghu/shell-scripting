@@ -41,3 +41,10 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 cd /tmp 
 unzip -o $COMPONENT.zip  &>> "${LOGFILE}"
 stat $? 
+
+echo -n "Injecting the $COMPONENT Schema"
+cd $COMPONENT-main
+mysql -uroot -pRoboShop@1 <shipping.sql
+stat $?
+
+echo -e "\e[32m ______ $COMPONENT Configuration Completed _________ \e[0m"
