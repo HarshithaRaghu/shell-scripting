@@ -4,3 +4,4 @@ COMPONENT=shipping
 
 source Robot/common.sh
 
+JAVA 
