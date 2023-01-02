@@ -1,3 +1,5 @@
 #!/bin/bash
 
-echo I am payment
+COMPONENT=payment
+source Robot/common.sh
+
