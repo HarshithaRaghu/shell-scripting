@@ -3,3 +3,4 @@
 COMPONENT=payment
 source Robot/common.sh
 
+PYTHON 
