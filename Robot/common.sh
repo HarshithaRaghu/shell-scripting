@@ -15,6 +15,25 @@ stat () {
    fi      
 }
 
+JAVA() {
+    echo -n  "Installing Maven : "
+    yum install maven -y  &>> "${LOFGILE}"
+    stat $? 
+
+    CREATE_USER             # Calling Create_User function to create user account
+
+    DOWNLOAD_AND_EXTRACT
+
+    echo -n "Generating the artifact : "
+    cd /home/$APPUSER/$COMPONENT/
+    mvn clean package &>> "${LOFGILE}"
+    mv target/$COMPONENT-1.0.jar $COMPONENT.jar
+    stat $?
+
+    CONFIGURE_SVC           # Configuring and starting service
+
+}
+
 NODEJS() {
     echo -n "Configuring Node JS:"
     curl -sL https://rpm.nodesource.com/setup_16.x | bash  &>> "${LOGFILE}"

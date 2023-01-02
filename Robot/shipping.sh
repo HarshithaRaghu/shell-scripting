@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo I am shipping
+COMPONENT=shipping
+
+source Robot/common.sh
+
