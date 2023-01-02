@@ -17,7 +17,7 @@ stat () {
 
 JAVA() {
     echo -n  "Installing Maven : "
-    yum install maven -y  &>> "${LOFGILE}"
+    yum install maven -y  &>> "${LOGFILE}"
     stat $? 
 
     CREATE_USER             # Calling Create_User function to create user account
@@ -26,7 +26,7 @@ JAVA() {
 
     echo -n "Generating the artifact : "
     cd /home/$APPUSER/$COMPONENT/
-    mvn clean package &>> "${LOFGILE}"
+    mvn clean package &>> "${LOGFILE}"
     mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
 
