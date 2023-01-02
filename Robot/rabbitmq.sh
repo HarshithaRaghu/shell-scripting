@@ -1,6 +1,7 @@
 #!/bin/bash
 
 COMPONENT-rabbitmq
+
 source Robot/common.sh
 
 echo -n "Installing and configuring $COMPONENT repo"
