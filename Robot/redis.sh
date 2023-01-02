@@ -1,8 +1,8 @@
 #!/bin/bash
 
 COMPONENT=redis
-
 source Robot/common.sh
+
 
 echo -n "downloading the $COMPONENT repo : "
 curl -L https://raw.githubusercontent.com/stans-robot-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>> "${LOGFILE}"
