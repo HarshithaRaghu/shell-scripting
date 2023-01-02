@@ -17,3 +17,19 @@ echo -n "Starting $COMPONENT :"
 systemctl enable rabbitmq-server &>> "${LOGFILE}"
 systemctl start rabbitmq-server  &>> "${LOGFILE}"
 stat $? 
+
+sudo rabbitmqctl list_users | grep "${APPUSER}" &>> "${LOGFILE}" 
+if [ $? -ne 0 ]; then 
+    echo -n "Creating Applicaiton user on $COMPONENT: "
+    rabbitmqctl add_user roboshop roboshop123 &>> "${LOGFILE}"
+    stat $? 
+fi 
+
+
+echo -n "Adding Permissions to $APPUSER :"
+rabbitmqctl set_user_tags roboshop administrator &>> "${LOGFILE}"
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"&>> "${LOGFILE}"
+stat $?
+
+
+echo -e "\e[32m __________ $COMPONENT Installation Completed _________ \e[0m"
