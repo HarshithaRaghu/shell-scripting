@@ -42,3 +42,4 @@ if [ "$1" == "all" ]; then
 else 
         launch_ec2                  # Calling Create Server Function
 fi 
+
